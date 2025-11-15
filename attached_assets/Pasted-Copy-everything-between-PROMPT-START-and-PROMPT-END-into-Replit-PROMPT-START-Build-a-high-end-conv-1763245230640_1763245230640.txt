@@ -1,0 +1,174 @@
+Copy everything between PROMPT START and PROMPT END into Replit:
+PROMPT START
+Build a high-end, conversion-focused single-page website for a professional cleaning service company using HTML, CSS, and JavaScript.
+This part focuses only on the frontend: layout, styling, responsiveness, and UI interactions. No backend.
+1. Project Setup
+Create three files:
+index.html
+styles.css
+script.js
+Link styles.css and script.js properly from index.html.
+Use semantic HTML5 and clean, commented code.
+2. Global Design System
+Use a premium, modern style that looks like a $2,000 custom website.
+Font: Google Font "Poppins" or "Inter".
+Colors (use CSS variables):
+--color-bg: #F8FAFC; (off-white)
+--color-primary: #0F172A; (dark navy)
+--color-accent: #22C55E; (fresh green) or #38BDF8 (aqua)
+--color-text: #0B1120;
+--color-muted: #64748B;
+Style:
+Lots of white space, clean layout, rounded corners.
+Use box-shadow for cards, and smooth hover transitions.
+Fully responsive, mobile-first.
+Use Flexbox and/or CSS Grid for layouts.
+3. Business Info (Placeholders)
+Use these placeholders (make them easy to change in the HTML):
+Business Name: “PrimeShine Cleaning Co.”
+Location: Tampa, Florida
+Phone: (555) 123-4567
+Email: contact@primeshinecleaning.com
+4. Page Structure (Sections)
+Create a single page with these sections:
+4.1 Sticky Navigation Bar
+Sticks to the top when scrolling.
+Left: text logo “PrimeShine”.
+Right: nav links that scroll to sections:
+Home, Services, Pricing, About, Reviews, FAQ, Contact.
+On mobile:
+Replace links with a hamburger icon.
+Use JavaScript to open/close a slide-down mobile menu.
+4.2 Hero Section
+Full-width hero at the top.
+Background image (use a generic cleaning-related placeholder URL in CSS).
+Add a dark overlay so text is readable.
+Content centered vertically:
+Big headline:
+“Spotless Spaces. Stress-Free Living.”
+Subheadline:
+“Professional residential and commercial cleaning in Tampa with flexible plans and 5-star service.”
+Two buttons:
+Primary: “Get a Free Quote” → scrolls to Contact section.
+Secondary: “View Services” → scrolls to Services section.
+Add smooth fade-in animation for hero text on page load.
+On mobile, add a floating “Get a Free Quote” button in the bottom-right corner.
+4.3 Trust Bar / Highlights Strip
+Section under hero.
+Horizontal strip with 3–4 items like:
+“5+ Years Experience”
+“100+ Happy Clients”
+“Licensed & Insured”
+“100% Satisfaction Guarantee”
+Use icons or badges with simple styling.
+4.4 Services Section
+Title + small subtitle.
+Use a responsive grid with service cards (3 per row desktop, 1 per row mobile).
+Include at least:
+Residential Cleaning
+Deep Cleaning
+Move-In / Move-Out
+Office & Commercial Cleaning
+AirBnB / Rental Turnover
+Post-Construction Cleaning
+Each service card:
+Icon (can be placeholder)
+Title
+1–2 sentence description
+A “Learn More” link or button (JS will open a modal with more info).
+4.5 Pricing Section
+Section with 3 pricing cards:
+Basic Maintenance
+Standard Deep Clean
+Premium VIP Plan
+Each card includes:
+Plan name
+Short tagline
+“Starting at” price (placeholder)
+4–6 bullet points
+“Book Now” button (JS will later connect to form).
+Highlight middle plan as “Most Popular” with a badge and stronger styling.
+4.6 About + Why Choose Us
+Two-column layout (stacked on mobile):
+Left: text about the company, mission, and promise.
+Right: “Why Choose Us” list with icons or checkmarks:
+Vetted & trained cleaners
+Eco-friendly products available
+Reliable scheduling
+Fully insured
+Transparent pricing
+Add a small badge like “Locally owned in Tampa, FL”.
+4.7 Reviews / Testimonials
+Section title: “What Our Clients Say”.
+3–5 testimonials:
+Name
+Star rating (use ★ symbols)
+Short quote
+Layout:
+On desktop: use a carousel slider or horizontal layout.
+On mobile: single card at a time.
+JavaScript: Create a simple slider for testimonials (auto-rotate + controls).
+4.8 FAQ Section
+Title: “Frequently Asked Questions”.
+6–8 questions, each with:
+Question heading
+Hidden answer that expands.
+Use accordion behavior (click question to toggle answer) with JS.
+4.9 Contact / Booking Section
+Section with two-column layout on desktop:
+Left side:
+Short text: “Ready for a spotless home or office?”
+Phone, email, service area (Tampa, nearby areas).
+Right side:
+Contact form (HTML only for now):
+Full Name (required)
+Phone (required)
+Email (required)
+Property Type (select: Apartment, House, Office, AirBnB, Other)
+Service Type (select: Basic Cleaning, Deep Cleaning, Move In/Out, Post-Construction, Other)
+Preferred Date (input type="date")
+Message / Notes (textarea)
+Style the form professionally with labels above inputs, focus states, and clear error messages area (JS will handle validation).
+4.10 Footer
+Include:
+Logo / brand name: “PrimeShine Cleaning Co.”
+Phone, email, location
+Small navigation links: Home, Services, Pricing, Contact
+Copyright text with current year
+“Back to top” link that scrolls smoothly.
+5. JavaScript Interactions (script.js)
+Implement these frontend-only behaviors:
+Smooth Scrolling
+All nav links, “Get a Free Quote”, “View Services”, “Back to Top”, and “Book Now” buttons scroll smoothly to their target sections.
+Mobile Menu Toggle
+Hamburger icon opens/closes a mobile menu with a simple animation (add/remove CSS class).
+Service Details Modal
+For each “Learn More” button in the Services section:
+Open a modal overlay with additional text about that service.
+Modal includes a close icon or button.
+Clicking outside the modal or on close → closes it.
+Pricing → Preselect Service
+When a “Book Now” button is clicked:
+Smooth scroll to Contact section.
+In the form, automatically set the Service Type or a hidden input to that plan name (e.g. “Premium VIP Plan”).
+FAQ Accordion
+Clicking a question toggles its answer.
+Only one open at a time on desktop (optional); on mobile multiple open is okay.
+Testimonials Slider
+Auto-rotate testimonials every 6–8 seconds.
+Include next/prev buttons or dots for manual control.
+Basic Form Validation (Frontend Only)
+On submit:
+Check required fields (name, phone, email, service type).
+Check email format.
+If invalid: show inline errors and prevent “fake submit”.
+If valid: prevent real submit, clear form, and show a temporary success message (e.g., a green banner saying:
+“Thanks! We’ll contact you within 24 hours.”).
+6. Animations & Polish
+Use CSS classes + JS to create scroll reveal effects:
+When a section enters the viewport, fade/slide it in.
+Add hover effects on:
+Buttons (slight scale + shadow)
+Cards (raise slightly with shadow).
+Make sure layout feels premium on desktop, tablet, and mobile.
+Deliver all frontend code (HTML, CSS, JS) complete and ready to run in the browser.
