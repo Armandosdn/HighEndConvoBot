@@ -7,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { useLocation } from "wouter";
 
 interface NavigationProps {
   onScrollToSection?: (sectionId: string) => void;
@@ -15,6 +16,7 @@ interface NavigationProps {
 export default function Navigation({ onScrollToSection }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,12 +27,12 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
   }, []);
 
   const services = [
-    "Residential Cleaning",
-    "Deep Cleaning",
-    "Move-In / Move-Out",
-    "Office & Commercial",
-    "AirBnB Turnover",
-    "Post-Construction",
+    { label: "Residential Cleaning", path: "/residential-cleaning" },
+    { label: "Deep Cleaning", path: "/deep-cleaning" },
+    { label: "Move-In / Move-Out", path: "/move-in-out" },
+    { label: "Office & Commercial", path: "/commercial-cleaning" },
+    { label: "AirBnB Turnover", path: "/airbnb-cleaning" },
+    { label: "Post-Construction", path: "/post-construction" },
   ];
 
   const navLinks = [
@@ -89,10 +91,13 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
                   {services.map((service, index) => (
                     <DropdownMenuItem
                       key={index}
-                      onClick={() => handleNavClick("services")}
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setLocation(service.path);
+                      }}
                       data-testid={`dropdown-service-${index}`}
                     >
-                      {service}
+                      {service.label}
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
@@ -126,14 +131,23 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
                 {link.label}
               </Button>
             ))}
-            <Button
-              variant="ghost"
-              onClick={() => handleNavClick("services")}
-              data-testid="link-mobile-services"
-              className="justify-start text-lg py-6"
-            >
-              Services
-            </Button>
+            <div className="border-t pt-2 mt-2">
+              <p className="text-sm font-semibold text-muted-foreground px-3 mb-2">Services</p>
+              {services.map((service, index) => (
+                <Button
+                  key={index}
+                  variant="ghost"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setLocation(service.path);
+                  }}
+                  data-testid={`link-mobile-service-${index}`}
+                  className="justify-start text-base py-5 w-full"
+                >
+                  {service.label}
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
       )}
