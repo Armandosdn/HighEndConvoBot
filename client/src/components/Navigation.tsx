@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 interface NavigationProps {
   onScrollToSection?: (sectionId: string) => void;
@@ -18,9 +24,17 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const services = [
+    "Residential Cleaning",
+    "Deep Cleaning",
+    "Move-In / Move-Out",
+    "Office & Commercial",
+    "AirBnB Turnover",
+    "Post-Construction",
+  ];
+
   const navLinks = [
     { label: "Home", id: "home" },
-    { label: "Services", id: "services" },
     { label: "Pricing", id: "pricing" },
     { label: "About", id: "about" },
     { label: "Reviews", id: "reviews" },
@@ -40,11 +54,7 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-background/95 backdrop-blur-sm shadow-md" : "bg-transparent"
-        }`}
-      >
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <button
@@ -67,6 +77,26 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
                   {link.label}
                 </Button>
               ))}
+              
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="text-sm gap-1" data-testid="button-services-dropdown">
+                    Services
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  {services.map((service, index) => (
+                    <DropdownMenuItem
+                      key={index}
+                      onClick={() => handleNavClick("services")}
+                      data-testid={`dropdown-service-${index}`}
+                    >
+                      {service}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             <Button
@@ -96,6 +126,14 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
                 {link.label}
               </Button>
             ))}
+            <Button
+              variant="ghost"
+              onClick={() => handleNavClick("services")}
+              data-testid="link-mobile-services"
+              className="justify-start text-lg py-6"
+            >
+              Services
+            </Button>
           </div>
         </div>
       )}
